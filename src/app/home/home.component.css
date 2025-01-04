@@ -1,0 +1,41 @@
+.home {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw; /* Asegura que ocupe todo el ancho de la ventana */
+  margin: 0;
+  padding: 0;
+}
+
+.background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.background-animation video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logo-mobile {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media (max-width: 767px) {
+  .home {
+    position: fixed; /* Fija el componente en la pantalla */
+    top: 0;
+    left: 0;
+    z-index: -1; /* Coloca el componente detrás de otros elementos */
+  }
+}

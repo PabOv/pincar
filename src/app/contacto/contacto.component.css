@@ -1,0 +1,25 @@
+/* contacto.component.css o en styles.css */
+.info-section {
+  background-color: #f9f9f9; /* Fondo gris claro para destacar secciones */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 1rem; /* Espaciado interno */
+  margin-bottom: 1rem; /* Espaciado inferior entre secciones */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  text-align: center; /* Centramos el texto en la sección */
+}
+
+h4 {
+  font-weight: bold; /* Peso de fuente en negrita para los títulos */
+  color: #333333; /* Color gris oscuro */
+  margin-bottom: 0.5rem; /* Margen inferior */
+}
+
+p {
+  font-size: 1rem; /* Tamaño de fuente para el texto */
+  color: #666666; /* Color gris para el texto */
+}
+
+.container {
+  max-width: 800px; /* Ancho máximo del contenedor */
+  margin: 0 auto; /* Centramos el contenedor en la página */
+}

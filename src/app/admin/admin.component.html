@@ -1,0 +1,107 @@
+<div class="admin-container">
+  <h2>Añadir Coche</h2>
+  <form [formGroup]="cocheForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="marca">Marca:</label>
+        <input id="marca" formControlName="marca" type="text" required>
+      </div>
+      <div class="form-group">
+        <label for="modelo">Modelo:</label>
+        <input id="modelo" formControlName="modelo" type="text" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="anio">Año:</label>
+        <input id="anio" formControlName="anio" type="number" required>
+      </div>
+      <div class="form-group">
+        <label for="kms">Kilometraje:</label>
+        <input id="kms" formControlName="kms" type="number" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="precio">Precio:</label>
+        <input id="precio" formControlName="precio" type="number" required>
+      </div>
+      <div class="form-group">
+        <label for="potencia">Motor:</label>
+        <input id="potencia" formControlName="potencia" type="text">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="combustible">Combustible:</label>
+      <select id="combustible" formControlName="combustible" required>
+        <option value="">Selecciona un tipo de combustible</option>
+        <option value="Gasolina">Gasolina</option>
+        <option value="Diesel">Diesel</option>
+        <option value="Híbrido">Híbrido</option>
+        <option value="Eléctrico">Eléctrico</option>
+        <option value="GLP">GLP (Gas Licuado del Petróleo)</option>
+        <option value="GNC">GNC (Gas Natural Comprimido)</option>
+        <option value="Híbrido Enchufable">Híbrido Enchufable</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="detalles">Detalles:</label>
+      <textarea id="detalles" formControlName="detalles" rows="6" cols="90" placeholder="Introduce detalles adicionales aquí..."></textarea>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="tamanoMotor">Tamaño Motor:</label>
+        <input id="tamanoMotor" formControlName="tamanoMotor" type="text">
+      </div>
+      <div class="form-group">
+        <label for="cajaCambios">Caja de Cambios:</label>
+        <input id="cajaCambios" formControlName="cajaCambios" type="text">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="carroceria">Carrocería:</label>
+        <input id="carroceria" formControlName="carroceria" type="text">
+      </div>
+      <div class="form-group">
+        <label for="intColor">Color Interior:</label>
+        <input id="intColor" formControlName="intColor" type="text">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="extColor">Color Exterior:</label>
+        <input id="extColor" formControlName="extColor" type="text">
+      </div>
+      <div class="form-group">
+        <label for="propietarios">Propietarios:</label>
+        <input id="propietarios" formControlName="propietarios" type="number">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="imagenes">Imágenes:</label>
+      <input id="imagenes" type="file" multiple (change)="onFileSelected($event)" accept="image/*">
+    </div>
+    <div class="image-preview" *ngIf="imagePreviewUrls.length > 0">
+      <img *ngFor="let url of imagePreviewUrls" [src]="url" alt="Vista previa">
+    </div>
+    <button type="submit" [disabled]="!cocheForm.valid || imagenes.length === 0">Añadir Coche</button>
+  </form>
+  <h2>Coches Añadidos</h2>
+  <div *ngFor="let coche of coches">
+    <div>
+      <span>{{ coche.marca }} {{ coche.modelo }}</span>
+      <span>{{ coche.kms }} kms</span>
+      <label>
+        <input type="checkbox" [checked]="coche.vendido" (change)="toggleVendido(coche)">
+        Vendido
+      </label>
+      <label>
+        <input type="checkbox" [checked]="coche.reservado" (change)="toggleReservado(coche)" />
+        Reservado
+      </label>
+      <button (click)="coche.id ? deleteCoche(coche.id) : null" [disabled]="!coche.id">Borrar</button>
+    </div>
+  </div>
+  <button class="logout-btn" (click)="logout()">Cerrar Sesión</button>
+</div>

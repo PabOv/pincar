@@ -1,0 +1,122 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">COMPRAMOS TU COCHE</h2>
+
+  <form [formGroup]="compraForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <div class="row">
+      <!-- Nombre -->
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre <span class="text-danger">*</span></label>
+          <input id="nombre" formControlName="nombre" type="text" class="form-control" placeholder="Tu nombre" />
+          <div *ngIf="compraForm.get('nombre')?.invalid && compraForm.get('nombre')?.touched" class="invalid-feedback">
+            Nombre es obligatorio.
+          </div>
+        </div>
+
+        <!-- Apellidos -->
+        <div class="mb-3">
+          <label for="apellidos" class="form-label">Apellidos</label>
+          <input id="apellidos" formControlName="apellidos" type="text" class="form-control" placeholder="Tus apellidos" />
+        </div>
+
+        <!-- Teléfono -->
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Teléfono <span class="text-danger">*</span></label>
+          <input id="telefono" formControlName="telefono" type="tel" class="form-control" placeholder="Tu teléfono" />
+          <div *ngIf="compraForm.get('telefono')?.invalid && compraForm.get('telefono')?.touched" class="invalid-feedback">
+            Teléfono es obligatorio.
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+          <input id="email" formControlName="email" type="email" class="form-control" placeholder="Tu email" />
+          <div *ngIf="compraForm.get('email')?.invalid && compraForm.get('email')?.touched" class="invalid-feedback">
+            Email es obligatorio y debe ser válido.
+          </div>
+        </div>
+
+        <!-- Confirmar Email -->
+        <div class="mb-3">
+          <label for="confirmEmail" class="form-label">Confirmar Email <span class="text-danger">*</span></label>
+          <input id="confirmEmail" formControlName="confirmEmail" type="email" class="form-control" placeholder="Confirma tu email" />
+          <div *ngIf="compraForm.errors?.['mismatch'] && compraForm.get('confirmEmail')?.touched" class="invalid-feedback">
+            Los emails deben coincidir y ser válidos.
+          </div>
+          <div *ngIf="compraForm.get('confirmEmail')?.invalid && compraForm.get('confirmEmail')?.touched" class="invalid-feedback">
+            Confirmar Email es obligatorio y debe ser válido.
+          </div>
+        </div>
+      </div>
+
+      <!-- Datos del Vehículo -->
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="marca" class="form-label">Marca del Vehículo <span class="text-danger">*</span></label>
+          <input id="marca" formControlName="marca" type="text" class="form-control" placeholder="Marca del vehículo" />
+          <div *ngIf="compraForm.get('marca')?.invalid && compraForm.get('marca')?.touched" class="invalid-feedback">
+            Marca es obligatoria.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="modelo" class="form-label">Modelo del Vehículo <span class="text-danger">*</span></label>
+          <input id="modelo" formControlName="modelo" type="text" class="form-control" placeholder="Modelo del vehículo" />
+          <div *ngIf="compraForm.get('modelo')?.invalid && compraForm.get('modelo')?.touched" class="invalid-feedback">
+            Modelo es obligatorio.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="km" class="form-label">Kilometraje <span class="text-danger">*</span></label>
+          <input id="km" formControlName="km" type="number" class="form-control" placeholder="Kilometraje del vehículo" />
+          <div *ngIf="compraForm.get('km')?.invalid && compraForm.get('km')?.touched" class="invalid-feedback">
+            Kilometraje es obligatorio.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="motor" class="form-label">Motor <span class="text-danger">*</span></label>
+          <input id="motor" formControlName="motor" type="text" class="form-control" placeholder="Motor del vehículo" />
+          <div *ngIf="compraForm.get('motor')?.invalid && compraForm.get('motor')?.touched" class="invalid-feedback">
+            Motor es obligatorio.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="potencia" class="form-label">Potencia <span class="text-danger">*</span></label>
+          <input id="potencia" formControlName="potencia" type="text" class="form-control" placeholder="Potencia del vehículo" />
+          <div *ngIf="compraForm.get('potencia')?.invalid && compraForm.get('potencia')?.touched" class="invalid-feedback">
+            Potencia es obligatoria.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="anio" class="form-label">Año <span class="text-danger">*</span></label>
+          <input id="anio" formControlName="anio" type="number" class="form-control" placeholder="Año del vehículo" />
+          <div *ngIf="compraForm.get('anio')?.invalid && compraForm.get('anio')?.touched" class="invalid-feedback">
+            Año es obligatorio.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="mensaje" class="form-label">Mensaje</label>
+          <textarea id="mensaje" formControlName="mensaje" class="form-control" rows="3" placeholder="Tu mensaje (opcional)"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="fotos" class="form-label">Fotos del Vehículo <span class="text-danger">*</span></label>
+          <input id="fotos" type="file" (change)="onFileChange($event)" multiple class="form-control" />
+          <div *ngIf="compraForm.get('fotos')?.invalid && compraForm.get('fotos')?.touched" class="invalid-feedback">
+            Debes subir al menos una foto.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary" [disabled]="compraForm.invalid">Enviar</button>
+    </div>
+  </form>
+</div>

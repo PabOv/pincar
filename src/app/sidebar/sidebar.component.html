@@ -1,0 +1,48 @@
+<div class="sidebar-wrapper" [ngClass]="{'active': isSidebarOpen}">
+  <!-- Botón del menú en móviles -->
+  <button class="toggle-button" *ngIf="screenWidth < 768" (click)="toggleSidebar()">☰ Menú</button>
+
+  <!-- Botón de retroceso -->
+  <button class="back-button" *ngIf="screenWidth < 768" (click)="goBack()">
+    ← Atrás
+  </button>
+
+  <!-- Sidebar lateral o menú desplegable -->
+  <div class="sidebar" [ngClass]="{'show-menu': isSidebarOpen || screenWidth >= 768}">
+    <!-- Logo (solo se muestra cuando el menú está abierto o en pantallas grandes) -->
+    <div class="logo" *ngIf="isSidebarOpen || screenWidth >= 768">
+      <img src="assets/images/logo.png" alt="Logo de la empresa" routerLink="/" />
+    </div>
+
+    <!-- Opciones de navegación -->
+    <div class="nav-container">
+      <div class="nav-item"><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></div>
+      <div class="nav-item"><a routerLink="/coches-en-venta" routerLinkActive="active">Coches en Venta</a></div>
+      <div class="nav-item"><a routerLink="/compramos-tu-coche" routerLinkActive="active">Compramos tu Coche</a></div>
+      <div class="nav-item"><a routerLink="/contacto" routerLinkActive="active">Contacto</a></div>
+    </div>
+
+    <!-- Información de contacto -->
+    <div class="contact-info">
+      <p><strong>Tlf:</strong> 671 477 718 / 659 479 272</p>
+      <p><strong>Email:</strong> {{emailAddress}}</p>
+      <p class="aviso-legal">
+        <a href="www.pincarocasion.com">{{enlaceWeb}}</a> |
+        <a [routerLink]="'/aviso-legal'">Aviso Legal</a> |
+        <a [routerLink]="'/politica-de-privacidad'">Política de Privacidad</a> |
+        <a [routerLink]="'/politica-de-cookies'">Política de Cookies</a>
+      </p>
+    </div>
+
+    <!-- Redes sociales -->
+    <div class="social-icons">
+      <a href="https://www.facebook.com/PincarOcasion" target="_blank">
+        <img src="assets/images/facebook.png" alt="Facebook" />
+      </a>
+      <a href="https://www.coches.net/concesionario/pincarocasion/" target="_blank">
+        <img src="assets/images/cochesnet.png" alt="Coches.Net" />
+      </a>
+    </div>
+  </div>
+  <div class="overlay" *ngIf="isOverlayActive" (click)="closeSidebar()"></div>
+</div>

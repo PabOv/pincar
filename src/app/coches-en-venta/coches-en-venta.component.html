@@ -1,0 +1,30 @@
+<div class="coches-container">
+  <ng-container *ngIf="coches$ | async as coches; else loading">
+    <div class="coches-grid">
+      <div class="coche-card" *ngFor="let coche of coches">
+        <div
+          class="coche-image-container"
+          (click)="navigateToDetails(coche.id)"
+        >
+          <img
+            [src]="coche.imagenes[0]"
+            alt="{{ coche.marca }} {{ coche.modelo }}"
+            class="coche-imagen"
+          />
+          <div class="vendido-overlay" *ngIf="coche.vendido">VENDIDO</div>
+          <div class="reservado-overlay" *ngIf="coche.reservado">RESERVADO</div>
+        </div>
+        <div class="coche-info">
+          <h2 class="coche-titulo">{{ coche.marca }} {{ coche.modelo }}</h2>
+          <p class="precio">{{ coche.precio | customNumber }}€</p>
+          <p><strong>Kilómetros:</strong> {{ coche.kms | customNumber }}</p>
+          <p><strong>Motor / CV:</strong> {{ coche.potencia }}</p>
+          <p><strong>Año:</strong> {{ coche.anio | customNumber }}</p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #loading>
+    <p class="loading-text">Cargando coches...</p>
+  </ng-template>
+</div>

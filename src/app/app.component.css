@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  /* Previene el scroll en el body */
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  /* Añade esto */
+}
+
+.sidebar {
+  width: 250px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 1000;
+  /* Asegura que esté por encima del contenido */
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 250px;
+  padding: 20px;
+  overflow-y: auto;
+  /* Permite el scroll en el contenido principal */
+  height: 100vh;
+  /* Asegura que ocupe toda la altura */
+}
+
+app-footer {
+  background-color: #151515;
+  padding: 10px;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    position: fixed;
+    top: 50px;
+    /* Ajusta según la altura del botón */
+    left: -100%;
+    /* Oculta por defecto */
+    width: 100%;
+    height: calc(100vh - 50px);
+    transition: left 0.3s ease;
+    z-index: 1001;
+    /* Asegúrate de que sea mayor que el overlay */
+  }
+
+  .sidebar.show-menu {
+    left: 0;
+    /* Muestra el menú */
+    z-index: 1001;
+    /* Mantiene por encima del overlay */
+  }
+
+  .overlay {
+    display: block;
+    /* Asegúrate de mostrarlo solo cuando sea necesario */
+    z-index: 1000;
+    /* Debe estar debajo del sidebar */
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding-top: 50px;
+    /* Altura del botón de menú */
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+  }
+}

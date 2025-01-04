@@ -1,1 +1,105 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importación de estilos globales */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+
+/* Estilo global */
+body, html {
+    font-family: 'Roboto', Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+    background-image: url('assets/images/wallpaperpincar.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5, h6,
+.menu, .nav-link {
+    font-family: 'Aldrich', sans-serif;
+    color: #333;
+}
+
+/* Espaciado */
+.container {
+    padding: 2rem;
+}
+
+/* Botones */
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 25px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Formularios */
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tarjetas de productos */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    border-radius: 10px 10px 0 0;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+    body, html {
+       overflow: hidden; 
+    }
+
+    .main-content {
+        padding-top: 50px;
+        height: calc(100vh - 50px);
+        overflow-y: auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .sidebar-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .home {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+    }
+}

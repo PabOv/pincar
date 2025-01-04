@@ -1,0 +1,124 @@
+/* Estilos generales */
+.admin-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  flex-wrap: wrap; /* Esto asegura que los elementos se acomoden cuando el espacio es reducido */
+}
+
+.form-group {
+  flex: 1;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #080808;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+textarea {
+  width: 100%; /* Asegura que los elementos no se desborden */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box; /* Esto asegura que el padding no afecte al tamaño total */
+}
+
+/* Estilo para el textarea */
+textarea {
+  resize: vertical; /* Permite redimensionar verticalmente */
+  height: auto;
+}
+
+/* Estilos para los botones */
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.logout-btn {
+  background-color: #dc3545;
+  margin-top: 20px;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+.image-preview {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.image-preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+/* Media query para pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column; /* Acomoda los campos de formulario verticalmente */
+  }
+
+  .form-group {
+    margin-right: 0;
+    width: 100%; /* Asegura que los grupos de formulario ocupen todo el ancho */
+  }
+
+  textarea {
+    height: 120px; /* Ajusta la altura del textarea para que sea más adecuado en pantallas pequeñas */
+  }
+
+  button {
+    width: 100%; /* Asegura que el botón ocupe el 100% del ancho */
+  }
+
+  .image-preview img {
+    width: 80px;
+    height: 80px;
+  }
+}

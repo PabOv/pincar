@@ -1,0 +1,36 @@
+/* sobre-nosotros.component.css o en styles.css */
+body {
+  display: grid; /* Activa Grid */
+  place-items: center; /* Centra horizontal y verticalmente */
+  min-height: 100vh; /* Asegura que ocupe toda la altura del viewport */
+  margin: 0; /* Elimina márgenes predeterminados */
+}
+
+.sobre-nosotros-container {
+  background: linear-gradient(to bottom, #abb2b7, #d6dee4, #ffffff);
+  padding: 1rem; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  max-width: 800px; /* Ancho máximo */
+  text-align: center; /* Centrar el texto dentro del contenedor */
+}
+
+.sobre-nosotros-container img {
+  max-width: 100%; /* Aseguramos que la imagen no sobrepase el contenedor */
+  height: auto; /* Altura automática para mantener la proporción */
+  margin-bottom: 1.5rem; /* Espacio inferior de la imagen */
+}
+
+h2 {
+  font-size: 2rem; /* Tamaño de fuente más grande para el título */
+  color: #333; /* Color del título */
+  margin-bottom: 1rem; /* Margen inferior del título */
+}
+
+.presentacion {
+  font-size: 1.125rem; /* Tamaño de fuente del párrafo */
+  color: #666; /* Color gris para el texto */
+  line-height: 1.6; /* Mayor espacio entre líneas para mejor legibilidad */
+  margin: 0 auto; /* Centrado del texto */
+  max-width: 700px; /* Ancho máximo del texto para evitar que sea muy extenso */
+}

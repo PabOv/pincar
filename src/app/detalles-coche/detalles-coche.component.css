@@ -1,0 +1,232 @@
+/* Estilos generales para el contenedor de las imágenes y detalles */
+.detalles-container {
+  margin: 20px;
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+}
+
+/* Fila con carrusel y datos */
+.contenido {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se apilen cuando sea necesario */
+  gap: 20px; /* Espacio entre elementos */
+  width: 100%; /* Asegura que ocupe todo el ancho */
+}
+
+.izquierda, .derecha {
+  flex: 1;
+  width: 100%; /* Los contenedores toman el 100% del ancho disponible */
+  min-width: 0; /* Asegura que no haya limitaciones */
+}
+
+.scroll-imagenes {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+/* Eliminar las flechas de desplazamiento */
+.scroll-imagenes::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Barra de desplazamiento personalizada */
+.scroll-imagenes::-webkit-scrollbar {
+  height: 16px;
+}
+
+.scroll-imagenes::-webkit-scrollbar-track {
+  background: linear-gradient(90deg, #d3d8d8, #4a4848);
+  border-radius: 10px;
+}
+
+.scroll-imagenes::-webkit-scrollbar-thumb {
+  background: #606565;
+  border-radius: 10px;
+  border: 3px solid #eadddd;
+}
+
+.scroll-imagenes::-webkit-scrollbar-thumb:hover {
+  background-color: #00b3b3;
+}
+
+/* Estilo para las imágenes pequeñas */
+.imagenes-pequenas {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.imagen-pequena {
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.imagen-pequena:hover {
+  transform: scale(1.1);
+}
+
+/* Estilo de la columna derecha con los datos del coche */
+.datos-coche {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.ficha {
+  margin: 10px 0;
+  border-top: 1px solid lightgray;
+  padding-top: 10px;
+  list-style: none;
+}
+
+.ficha li {
+  border-bottom: 1px solid lightgray;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.ficha li strong {
+  display: inline-block;
+  width: 40%;
+  text-align: left;
+}
+
+.dato {
+  display: inline-block;
+  width: 60%;
+  text-align: left;
+}
+
+.datos-coche {
+  max-width: 400px;
+  margin: 2px auto;
+}
+
+.contacto {
+  margin-top: 20px;
+}
+
+/* Estilo del carrusel */
+.carousel {
+  border: none;
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+/* Estilos para los botones */
+.btn-square {
+  border-radius: 0;
+  padding: 10px 20px;
+  border: 2px solid transparent;
+  transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
+
+.btn-square.btn-primary {
+  background-color: #004085;
+  color: white;
+}
+
+.btn-square.btn-success {
+  background-color: #155724;
+  color: white;
+}
+
+.btn-square:hover {
+  background-color: #ffffff;
+  color: #004085;
+  border: 2px solid #004085;
+}
+
+/* Estilo de los controles del carrusel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgb(255, 255, 255);
+  mask: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 767px) {
+
+  .detalles-container {
+    margin: 10px;
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  }
+
+  .contenido {
+    flex-direction: column; /* Apilar los elementos en columnas */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    gap: 10px; /* Reducir el espacio entre los elementos */
+  }
+
+  .izquierda, .derecha {
+    width: 100%; /* Ambos ocupan el 100% del ancho */
+    min-width: 0; /* Quitar el límite de ancho mínimo */
+    padding: 0; /* Asegura que no haya margen innecesario */
+  }
+
+  .titulo-coche {
+    font-size: 1.8rem; /* Reducir el tamaño del título */
+    text-align: center;
+    margin-left: 0; /* Eliminar margen izquierdo */
+  }
+
+  .precio-coche {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .ficha li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ficha li strong {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+
+  .dato {
+    width: 100%;
+    text-align: left;
+  }
+
+  .imagenes-pequenas {
+    justify-content: center;
+    overflow-x: auto;
+  }
+
+  .imagen-pequena {
+    width: 80px;
+    height: 60px;
+  }
+
+  /* Ajustar el carrusel */
+  .carousel-inner img {
+    max-height: 300px;
+  }
+
+  /* Botones de contacto */
+  .btn-square {
+    width: 100%; /* Los botones ocupan todo el ancho */
+    padding: 12px 20px;
+    font-size: 1.1rem;
+  }
+
+  /* Asegurar que el texto de contacto no se vea cortado */
+  .contacto p {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+}
