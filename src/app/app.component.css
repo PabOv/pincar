@@ -15,7 +15,9 @@ body {
   display: flex;
   min-height: 100vh;
   position: relative;
-  /* Añade esto */
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 .sidebar {
