@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Storage, getDownloadURL, ref } from '@angular/fire/storage';
 
 @Component({
@@ -7,6 +7,7 @@ import { Storage, getDownloadURL, ref } from '@angular/fire/storage';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('backgroundVideo') backgroundVideo!: ElementRef<HTMLVideoElement>;
   videoUrl: string = '';
   isMobile: boolean = true;
 
@@ -41,5 +42,30 @@ export class HomeComponent implements OnInit {
           console.error('Error al obtener la URL del video:', error);
         });
     }
+  }
+
+  ngAfterViewInit(): void {
+    if (!this.isMobile && this.backgroundVideo) {
+      this.playVideo();
+    }
+
+    // Reproducir el vídeo cuando la página esté visible nuevamente
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && this.backgroundVideo) {
+        this.playVideo();
+      }
+    });
+  }
+
+  onVideoLoaded(): void {
+    this.playVideo();
+  }
+
+  private playVideo(): void {
+    const videoElement = this.backgroundVideo.nativeElement;
+    videoElement.muted = true; // Asegura que el vídeo esté silenciado
+    videoElement.play().catch(error => {
+      console.error('Error al reproducir el vídeo:', error);
+    });
   }
 }

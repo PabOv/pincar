@@ -1,6 +1,19 @@
 <div class="home">
   <div class="background-animation">
-    <video *ngIf="!isMobile && videoUrl" [src]="videoUrl" autoplay muted loop></video>
-    <img *ngIf="isMobile" src="assets/images/portada-movil.webp" alt="Logo de la empresa" class="logo-mobile" />
+    <video
+      *ngIf="!isMobile && videoUrl"
+      #backgroundVideo
+      [src]="videoUrl"
+      autoplay
+      muted
+      loop
+      (loadeddata)="onVideoLoaded()"
+    ></video>
+    <img
+      *ngIf="isMobile"
+      src="assets/images/portada-movil.webp"
+      alt="Logo de la empresa"
+      class="logo-mobile"
+    />
   </div>
 </div>
