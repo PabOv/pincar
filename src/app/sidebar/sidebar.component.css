@@ -25,17 +25,27 @@
 .sidebar {
   position: fixed;
   top: 0;
-  left: -250px; /* Oculta la sidebar por defecto */
+  left: -250px;
+  /* Oculta la sidebar por defecto */
   width: 250px;
   height: 100vh;
   background: linear-gradient(135deg, rgba(192, 190, 190, 0.8), rgba(230, 229, 229, 0.6));
   color: #fff;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  /* Distribuye el contenido */
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transition: left 0.3s ease;
   z-index: 1001;
+}
+
+/* Información de contacto y redes sociales en la parte inferior */
+.contact-info,
+.social-icons {
+  margin-top: auto;
+  /* Empuja hacia abajo */
 }
 
 .overlay {
@@ -45,7 +55,8 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000; /* Justo debajo del sidebar */
+  z-index: 1000;
+  /* Justo debajo del sidebar */
 }
 
 /* Sidebar visible cuando la clase show-menu está activa */
@@ -181,30 +192,45 @@
   }
 
   .sidebar {
-    display: block;
-    position: fixed;
     left: 0;
     width: 250px;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .contact-info {
-    margin-top: 335px;
+    align-items: flex-end;
+  }
+
+  .social-icons {
+    align-items: flex-end;
   }
 }
 
 .back-button {
-  display: block; /* Asegúrate de que se muestre */
-  background-color: #403d3d; /* Color de fondo */
-  color: white; /* Color del texto */
-  border: none; /* Sin borde */
-  padding: 10px; /* Espaciado interno */
-  font-size: 18px; /* Tamaño de fuente */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  width: 100%; /* Ocupar todo el ancho */
-  text-align: left; /* Alinear texto a la izquierda */
+  display: block;
+  /* Asegúrate de que se muestre */
+  background-color: #403d3d;
+  /* Color de fondo */
+  color: white;
+  /* Color del texto */
+  border: none;
+  /* Sin borde */
+  padding: 10px;
+  /* Espaciado interno */
+  font-size: 18px;
+  /* Tamaño de fuente */
+  cursor: pointer;
+  /* Cambia el cursor al pasar por encima */
+  width: 100%;
+  /* Ocupar todo el ancho */
+  text-align: left;
+  /* Alinear texto a la izquierda */
 }
 
 .back-button:hover {
-  background-color: #5a5454; /* Color al pasar el mouse */
+  background-color: #5a5454;
+  /* Color al pasar el mouse */
 }
