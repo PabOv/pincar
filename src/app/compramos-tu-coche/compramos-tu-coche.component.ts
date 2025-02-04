@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormularioService } from '../services/formulario.service';
 import { CochesService } from '../services/coches.service'; // Importa el servicio
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-compramos-tu-coche',
@@ -12,7 +13,10 @@ export class CompramosTuCocheComponent implements OnInit {
   compraForm!: FormGroup;
   imagenes: File[] = []; // Para almacenar las imágenes seleccionadas
 
-  constructor(private fb: FormBuilder, private formularioService: FormularioService, private cochesService: CochesService) { }
+  constructor(private fb: FormBuilder,
+              private formularioService: FormularioService,
+              private cochesService: CochesService,
+              private router: Router) { }
 
   ngOnInit() {
     this.compraForm = this.fb.group({
@@ -50,9 +54,6 @@ export class CompramosTuCocheComponent implements OnInit {
   }
 
   async onSubmit() {
-    console.log('Formulario válido:', this.compraForm.valid); // Para debug
-    console.log('Errores del formulario:', this.compraForm.errors); // Para debug
-
     if (this.compraForm.valid) {
       const formData = this.compraForm.value;
 
@@ -79,10 +80,10 @@ export class CompramosTuCocheComponent implements OnInit {
 
         // Usar el servicio para enviar el formulario
         await this.formularioService.enviarFormulario(emailParams);
-        console.log('Correo enviado con éxito');
+        this.router.navigate(['/agradecimiento']);
         // Mostrar mensaje de éxito al usuario
       } catch (error) {
-        console.error('Error al enviar el correo', error);
+        console.error('Error al enviar el formulario', error);
         // Mostrar mensaje de error al usuario
       }
     }

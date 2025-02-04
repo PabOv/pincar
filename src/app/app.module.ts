@@ -26,6 +26,7 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { AvisoLegalComponent } from './aviso-legal/aviso-legal.component';
 import { PoliticaPrivacidadComponent } from './politica-privacidad/politica-privacidad.component';
 import { PoliticaCookiesComponent } from './politica-cookies/politica-cookies.component';
+import { AgradecimientoComponent } from './agradecimiento/agradecimiento.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PoliticaCookiesComponent } from './politica-cookies/politica-cookies.co
     AvisoLegalComponent,
     PoliticaPrivacidadComponent,
     PoliticaCookiesComponent,
+    AgradecimientoComponent,
   ],
   imports: [
     BrowserModule,

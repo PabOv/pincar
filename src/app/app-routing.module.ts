@@ -14,6 +14,7 @@ import { ErrorComponent } from './error/error.component';
 import { AvisoLegalComponent } from './aviso-legal/aviso-legal.component';
 import { PoliticaPrivacidadComponent } from './politica-privacidad/politica-privacidad.component';
 import { PoliticaCookiesComponent } from './politica-cookies/politica-cookies.component';
+import { AgradecimientoComponent } from './agradecimiento/agradecimiento.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'aviso-legal', component: AvisoLegalComponent },
   { path: 'politica-de-privacidad', component: PoliticaPrivacidadComponent },
   { path: 'politica-de-cookies', component: PoliticaCookiesComponent },
+  { path: 'agradecimiento', component: AgradecimientoComponent },
   
   // Ruta de login siempre accesible
   { path: 'login', component: LoginComponent },

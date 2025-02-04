@@ -1,0 +1,19 @@
+.agradecimiento-container {
+    background-color: #f8f9fa; /* Fondo claro */
+    padding: 2rem; /* Espaciado */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    max-width: 600px; /* Ancho máximo */
+    margin: 2rem auto; /* Centrado */
+  }
+  
+  h2 {
+    color: #007bff; /* Color del título */
+    margin-bottom: 1rem; /* Espaciado inferior */
+  }
+  
+  p {
+    color: #6c757d; /* Color del subtítulo */
+    font-size: 1.2rem; /* Tamaño del texto */
+  }
+  
