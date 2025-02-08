@@ -15,6 +15,7 @@ import { AvisoLegalComponent } from './aviso-legal/aviso-legal.component';
 import { PoliticaPrivacidadComponent } from './politica-privacidad/politica-privacidad.component';
 import { PoliticaCookiesComponent } from './politica-cookies/politica-cookies.component';
 import { AgradecimientoComponent } from './agradecimiento/agradecimiento.component';
+import { ModificarCocheComponent } from './modificar-coche/modificar-coche.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'politica-de-privacidad', component: PoliticaPrivacidadComponent },
   { path: 'politica-de-cookies', component: PoliticaCookiesComponent },
   { path: 'agradecimiento', component: AgradecimientoComponent },
+  { path: 'modificar-coche/:id', component: ModificarCocheComponent },
   
   // Ruta de login siempre accesible
   { path: 'login', component: LoginComponent },

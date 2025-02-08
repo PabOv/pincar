@@ -1,7 +1,12 @@
 /* Estilos generales para el contenedor de las imágenes y detalles */
+
+html, body {
+  overflow-x: hidden;
+}
+
 .detalles-container {
-  margin: 20px;
-  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+  max-width: 100vw; /* Asegura que el contenedor no supere el ancho de la pantalla */
+  overflow-x: hidden; /* Previene desplazamiento lateral */
 }
 
 /* Fila con carrusel y datos */
@@ -10,12 +15,14 @@
   flex-wrap: wrap; /* Permite que los elementos se apilen cuando sea necesario */
   gap: 20px; /* Espacio entre elementos */
   width: 100%; /* Asegura que ocupe todo el ancho */
+  overflow: hidden;
 }
 
 .izquierda, .derecha {
   flex: 1;
   width: 100%; /* Los contenedores toman el 100% del ancho disponible */
   min-width: 0; /* Asegura que no haya limitaciones */
+  overflow: hidden;
 }
 
 .scroll-imagenes {
@@ -112,13 +119,16 @@
 
 /* Estilo del carrusel */
 .carousel {
+  width: 100%;
+  max-width: 100%;
   border: none;
 }
 
 .carousel-inner img {
   width: 100%;
+  max-width: 100%;
   height: auto;
-  max-height: 400px;
+  max-height: 600px;
   object-fit: contain;
 }
 
@@ -171,6 +181,7 @@
 
   .izquierda, .derecha {
     width: 100%; /* Ambos ocupan el 100% del ancho */
+    max-width: 100%;
     min-width: 0; /* Quitar el límite de ancho mínimo */
     padding: 0; /* Asegura que no haya margen innecesario */
   }

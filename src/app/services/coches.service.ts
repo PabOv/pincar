@@ -91,4 +91,13 @@ export class CochesService {
     const cocheDocRef = doc(this.firestore, `coches/${cocheId}`);
     await deleteDoc(cocheDocRef);
   }
+
+  async updateCocheFields(cocheId: string, fieldsToUpdate: Partial<Coche>): Promise<void> {
+    if (!cocheId) {
+      throw new Error('El ID del coche es obligatorio para actualizar.');
+    }
+  
+    const cocheDocRef = doc(this.firestore, `coches/${cocheId}`);
+    await updateDoc(cocheDocRef, fieldsToUpdate);
+  }
 }

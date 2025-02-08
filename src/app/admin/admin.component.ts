@@ -120,4 +120,8 @@ export class AdminComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+  modificarCoche(cocheId: string | undefined) {
+    this.router.navigate(['/modificar-coche', cocheId]);
+  }
 }

@@ -101,6 +101,8 @@
         Reservado
       </label>
       <button (click)="coche.id ? deleteCoche(coche.id) : null" [disabled]="!coche.id">Borrar</button>
+
+      <button (click)="modificarCoche(coche.id)">Modificar</button>
     </div>
   </div>
   <button class="logout-btn" (click)="logout()">Cerrar Sesión</button>
