@@ -2,8 +2,8 @@
   <!-- Fila superior para marca y modelo -->
   <div class="row">
     <div class="col d-flex justify-content-between">
-      <h1 class="titulo-coche" *ngIf="coche">{{ coche.marca }} {{ coche.modelo }}</h1>
-      <p class="precio-coche" *ngIf="coche">{{ coche.precio | customNumber }} €</p>
+      <h1 class="titulo-coche" *ngIf="coche" style="font-size: 36px; font-weight: bold; color: #333; margin-left: 20px; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px;">{{ coche.marca }} {{ coche.modelo }}</h1>
+      <p class="precio-coche" *ngIf="coche" style="font-size: 50px; font-weight: bold; color: #007bff; text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.5); margin-right: 20px;">{{ coche.precio | customNumber }} €</p>
     </div>
   </div>
 
@@ -74,6 +74,18 @@
           </li>
         </ul>
       </div>
+      <br>
+      <br>
+      <!-- Botones de contacto debajo del contenedor de información -->
+      <div class="contacto text-center">
+        <button class="btn btn-primary btn-square d-block mx-auto mb-2" (click)="mostrarTelefono()">
+          <i class="bi bi-telephone-fill"></i> Contacto por teléfono
+        </button>
+        <p *ngIf="telefonoVisible">{{ telefono }}</p>
+        <button class="btn btn-success btn-square d-block mx-auto" [routerLink]="['/contacto']">
+          <i class="bi bi-envelope-fill"></i> Contacto por email
+        </button>
+      </div>
     </div>
   </div>
 
@@ -83,19 +95,6 @@
   <div class="row descripcion">
     <h3>Descripción</h3>
     <p>{{ coche.detalles }}</p>
-  </div>
-
-  <!-- Fila de botones de contacto -->
-  <div class="row contacto">
-    <div class="col text-center">
-      <button class="btn btn-primary btn-square me-2" (click)="mostrarTelefono()">
-        <i class="bi bi-telephone-fill"></i> Contacto por teléfono
-      </button>
-      <p *ngIf="telefonoVisible">{{ telefono }}</p>
-      <button class="btn btn-success btn-square" [routerLink]="['/contacto']">
-        <i class="bi bi-envelope-fill"></i> Contacto por email
-      </button>
-    </div>
   </div>
 
   <p *ngIf="!coche">Cargando datos del coche...</p>

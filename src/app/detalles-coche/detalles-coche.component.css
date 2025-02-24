@@ -9,27 +9,37 @@ html, body {
   overflow-x: hidden; /* Previene desplazamiento lateral */
 }
 
+.informacion-titulo {
+  font-size: 22px;
+  font-weight: 600;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
 /* Fila con carrusel y datos */
 .contenido {
   display: flex;
-  flex-wrap: wrap; /* Permite que los elementos se apilen cuando sea necesario */
-  gap: 20px; /* Espacio entre elementos */
-  width: 100%; /* Asegura que ocupe todo el ancho */
-  overflow: hidden;
+  flex-wrap: nowrap; /* Permite que los elementos se apilen cuando sea necesario */
+  gap: 30px; /* Espacio entre elementos */
+  align-items: flex-start;
 }
 
-.izquierda, .derecha {
-  flex: 1;
-  width: 100%; /* Los contenedores toman el 100% del ancho disponible */
-  min-width: 0; /* Asegura que no haya limitaciones */
-  overflow: hidden;
+.izquierda {
+  flex: 2; /* Hace que la sección de imágenes sea más grande */
+  max-width: 65%; /* Limita el ancho máximo */
+}
+
+.derecha {
+  flex: 1; /* Reduce el tamaño de la información */
+  max-width: 35%; /* Asegura que no ocupe demasiado espacio */
+  margin-left: 20px; /* Desplaza la información más a la derecha */
 }
 
 .scroll-imagenes {
   display: flex;
   align-items: center;
   overflow-x: auto;
-  padding: 10px 0;
+  padding: 15px 0;
 }
 
 /* Eliminar las flechas de desplazamiento */
@@ -78,8 +88,11 @@ html, body {
 
 /* Estilo de la columna derecha con los datos del coche */
 .datos-coche {
-  margin: 20px 0;
-  text-align: left;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #007bff;
 }
 
 .ficha {
@@ -106,15 +119,13 @@ html, body {
   display: inline-block;
   width: 60%;
   text-align: left;
+  font-weight: bold;
+  color: #333;
 }
 
 .datos-coche {
   max-width: 400px;
   margin: 2px auto;
-}
-
-.contacto {
-  margin-top: 20px;
 }
 
 /* Estilo del carrusel */
@@ -128,32 +139,47 @@ html, body {
   width: 100%;
   max-width: 100%;
   height: auto;
-  max-height: 600px;
+  max-height: 750px;
   object-fit: contain;
 }
 
 /* Estilos para los botones */
-.btn-square {
-  border-radius: 0;
-  padding: 10px 20px;
-  border: 2px solid transparent;
-  transition: background-color 0.3s, color 0.3s, border 0.3s;
+.contacto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.btn-square.btn-primary {
-  background-color: #004085;
+.contacto button {
+  font-size: 18px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  border: none;
+  width: 260px;
+}
+
+.btn-primary {
+  background: #007bff;
   color: white;
 }
 
-.btn-square.btn-success {
-  background-color: #155724;
+.btn-primary:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+.btn-success {
+  background: #28a745;
   color: white;
 }
 
-.btn-square:hover {
-  background-color: #ffffff;
-  color: #004085;
-  border: 2px solid #004085;
+.btn-success:hover {
+  background: #1d9239;
+  transform: scale(1.05);
 }
 
 /* Estilo de los controles del carrusel */
@@ -163,6 +189,23 @@ html, body {
   mask: none;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
+}
+
+/* DESCRIPCIÓN */
+.descripcion {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.descripcion h3 {
+  color: #007bff;
+}
+
+.descripcion p {
+  line-height: 1.6;
 }
 
 /* Estilos para pantallas pequeñas */
@@ -186,16 +229,22 @@ html, body {
     padding: 0; /* Asegura que no haya margen innecesario */
   }
 
-  .titulo-coche {
-    font-size: 1.8rem; /* Reducir el tamaño del título */
-    text-align: center;
-    margin-left: 0; /* Eliminar margen izquierdo */
-  }
-
   .precio-coche {
-    font-size: 2rem;
-    text-align: center;
+    font-size: 50px !important;
+    font-weight: bold !important;
+    color: #007bff !important;
+    text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.5) !important;
+    margin-right: 20px !important;
   }
+  
+  .titulo-coche {
+    font-size: 36px !important;
+    font-weight: bold !important;
+    color: #333 !important;
+    margin-left: 20px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+  }  
 
   .ficha li {
     flex-direction: column;
