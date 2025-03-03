@@ -26,13 +26,13 @@ html, body {
 
 .izquierda {
   flex: 2; /* Hace que la sección de imágenes sea más grande */
-  max-width: 65%; /* Limita el ancho máximo */
+  max-width: 80%; /* Limita el ancho máximo */
 }
 
 .derecha {
   flex: 1; /* Reduce el tamaño de la información */
-  max-width: 35%; /* Asegura que no ocupe demasiado espacio */
-  margin-left: 20px; /* Desplaza la información más a la derecha */
+  max-width: 20%; /* Asegura que no ocupe demasiado espacio */
+  margin-left: 5px; /* Desplaza la información más a la derecha */
 }
 
 .scroll-imagenes {
@@ -89,10 +89,12 @@ html, body {
 /* Estilo de la columna derecha con los datos del coche */
 .datos-coche {
   background: #f8f9fa;
-  padding: 20px;
+  padding: 10px;
   border-radius: 16px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-left: 5px solid #007bff;
+  max-width: 500px; /* Aumenta el ancho máximo */
+  width: 100%; /* Asegura que crezca dentro del contenedor */
 }
 
 .ficha {
@@ -139,7 +141,7 @@ html, body {
   width: 100%;
   max-width: 100%;
   height: auto;
-  max-height: 750px;
+  max-height: 900px;
   object-fit: contain;
 }
 
@@ -217,14 +219,15 @@ html, body {
   }
 
   .contenido {
-    flex-direction: column; /* Apilar los elementos en columnas */
-    width: 100%; /* Asegura que ocupe todo el ancho */
-    gap: 10px; /* Reducir el espacio entre los elementos */
+    gap: 5px; /* Reducir el espacio entre los elementos */
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
   }
 
   .izquierda, .derecha {
     width: 100%; /* Ambos ocupan el 100% del ancho */
-    max-width: 100%;
+    max-width: 70%;
     min-width: 0; /* Quitar el límite de ancho mínimo */
     padding: 0; /* Asegura que no haya margen innecesario */
   }
