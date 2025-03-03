@@ -105,182 +105,114 @@ html, body {
 }
 
 .ficha li {
+  display: block; /* Cambiar de flex a bloque para apilar los elementos */
+  margin: 10px 0;
   border-bottom: 1px solid lightgray;
   padding: 5px 0;
-  display: flex;
-  align-items: center;
 }
 
-.ficha li strong {
-  display: inline-block;
-  width: 40%;
-  text-align: left;
+.ficha li strong,
+.ficha li .dato {
+  display: block; /* Hacer que tanto las etiquetas como los valores ocupen toda la línea */
+  width: 100%; /* Asegura que ambos elementos ocupen todo el ancho disponible */
+  text-align: left; /* Alineación a la izquierda */
+  margin-bottom: 5px; /* Espacio entre la etiqueta y el valor */
 }
 
 .dato {
-  display: inline-block;
-  width: 60%;
-  text-align: left;
-  font-weight: bold;
+  font-weight: normal;
   color: #333;
+  overflow: hidden;
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos cuando el texto es demasiado largo */
+  word-wrap: break-word; /* Permite que el texto largo se ajuste cuando sea necesario */
 }
 
-.datos-coche {
-  max-width: 400px;
-  margin: 2px auto;
-}
-
-/* Estilo del carrusel */
-.carousel {
-  width: 100%;
-  max-width: 100%;
-  border: none;
-}
-
-.carousel-inner img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  max-height: 900px;
-  object-fit: contain;
-}
-
-/* Estilos para los botones */
-.contacto {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.contacto button {
-  font-size: 18px;
-  padding: 12px 24px;
-  border-radius: 30px;
-  transition: all 0.3s ease-in-out;
-  font-weight: bold;
-  border: none;
-  width: 260px;
-}
-
-.btn-primary {
-  background: #007bff;
-  color: white;
-}
-
-.btn-primary:hover {
-  background: #0056b3;
-  transform: scale(1.05);
-}
-
-.btn-success {
-  background: #28a745;
-  color: white;
-}
-
-.btn-success:hover {
-  background: #1d9239;
-  transform: scale(1.05);
-}
-
-/* Estilo de los controles del carrusel */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: rgb(255, 255, 255);
-  mask: none;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-}
-
-/* DESCRIPCIÓN */
-.descripcion {
-  background: white;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-}
-
-.descripcion h3 {
-  color: #007bff;
-}
-
-.descripcion p {
-  line-height: 1.6;
-}
-
-/* Estilos para pantallas pequeñas */
+/* Para pantallas más pequeñas (hasta 767px) */
 @media (max-width: 767px) {
-
-  .detalles-container {
-    margin: 10px;
-    width: 100%; /* Asegura que ocupe todo el ancho disponible */
-  }
-
   .contenido {
-    gap: 5px; /* Reducir el espacio entre los elementos */
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-  }
-
-  .izquierda, .derecha {
-    width: 100%; /* Ambos ocupan el 100% del ancho */
-    max-width: 70%;
-    min-width: 0; /* Quitar el límite de ancho mínimo */
-    padding: 0; /* Asegura que no haya margen innecesario */
+    flex-direction: column; /* Cambia la dirección del flex a columna para apilar los elementos */
   }
 
   .precio-coche {
-    font-size: 50px !important;
-    font-weight: bold !important;
-    color: #007bff !important;
-    text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.5) !important;
-    margin-right: 20px !important;
+    font-size: 50px;
+    font-weight: bold;
+    color: #007bff;
+    text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.5);
+    margin-top: 20px; /* Ajuste del margen superior para desplazar el precio hacia abajo */
+    text-align: center; /* Centra el precio horizontalmente */
+    margin-right: 0; /* Elimina el margen derecho */
   }
-  
-  .titulo-coche {
-    font-size: 36px !important;
-    font-weight: bold !important;
-    color: #333 !important;
-    margin-left: 20px !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-  }  
+
+  .izquierda, .derecha {
+    width: 100%; /* Ambas ocupan el 100% del ancho */
+    max-width: 100%; /* Quitar el límite de ancho máximo */
+    min-width: 0; /* Asegura que los elementos puedan reducir su tamaño */
+    padding: 0; /* Quitar márgenes innecesarios */
+  }
+
+  /* Ajustar la columna derecha (información del coche) */
+  .derecha {
+    padding: 15px; /* Agregar un poco de relleno */
+    box-sizing: border-box; /* Asegura que el padding no desborde el ancho */
+  }
+
+  /* Ajustar el contenedor de datos del coche para pantallas pequeñas */
+  .datos-coche {
+    max-width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    width: 100%; /* Ajuste total al 100% */
+  }
+
+  .ficha {
+    margin: 10px 0;
+    border-top: 1px solid lightgray;
+    padding-top: 10px;
+    list-style: none;
+    display: flex;
+    flex-direction: column; /* Apilar los elementos verticalmente */
+  }
 
   .ficha li {
-    flex-direction: column;
+    border-bottom: 1px solid lightgray;
+    padding: 5px 0;
+    display: flex;
+    flex-direction: column; /* Apilar los elementos en lugar de mostrarlos en fila */
     align-items: flex-start;
   }
 
   .ficha li strong {
-    width: 100%;
+    width: 100%; /* Asegurar que el texto 'strong' ocupe el 100% del ancho */
     text-align: left;
     margin-bottom: 5px;
   }
 
   .dato {
-    width: 100%;
+    width: 100%; /* Asegura que los datos también ocupen el 100% del ancho */
     text-align: left;
   }
 
+  /* Estilos para las imágenes pequeñas en la parte inferior */
   .imagenes-pequenas {
     justify-content: center;
     overflow-x: auto;
+    flex-wrap: nowrap;
+    display: flex;
+    padding: 10px;
   }
 
   .imagen-pequena {
     width: 80px;
     height: 60px;
+    object-fit: cover;
   }
 
-  /* Ajustar el carrusel */
+  /* Ajustes para el carrusel en pantallas pequeñas */
   .carousel-inner img {
     max-height: 300px;
+    object-fit: contain;
   }
 
-  /* Botones de contacto */
+  /* Estilo de los botones de contacto */
   .btn-square {
     width: 100%; /* Los botones ocupan todo el ancho */
     padding: 12px 20px;
