@@ -1,99 +1,70 @@
 <div class="detalles-container">
   <!-- Fila superior para marca y modelo -->
-  <div class="row">
-    <div class="col d-flex justify-content-between">
-      <h1 class="titulo-coche" *ngIf="coche" style="font-size: 36px; font-weight: bold; color: #333; margin-left: 20px; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px;">{{ coche.marca }} {{ coche.modelo }}</h1>
-      <p class="precio-coche" *ngIf="coche" style="font-size: 50px; font-weight: bold; color: #007bff; text-shadow: 1px 1px 3px rgba(0, 123, 255, 0.5); margin-right: 20px;">{{ coche.precio | customNumber }}€</p>
+  <div class="row text-center">
+    <h1 class="titulo-coche" *ngIf="coche">{{ coche.marca }} {{ coche.modelo }}</h1>
+    <p class="precio-coche" *ngIf="coche">{{ coche.precio | customNumber }}€</p>
+  </div>
+
+  <!-- Carrusel de imágenes -->
+  <div class="imagen-container">
+    <div id="carouselExample" class="carousel slide">
+      <div class="carousel-inner">
+        <div *ngIf="coche">
+          <div *ngFor="let url of coche.imagenes; let i = index" class="carousel-item" [class.active]="i === activeIndex">
+            <img [src]="url" class="d-block imagen-principal" alt="Imagen {{ i + 1 }}">
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="fas fa-chevron-left" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="fas fa-chevron-right" aria-hidden="true"></span>
+      </button>
     </div>
   </div>
 
-  <!-- Fila con carrusel, scroll e información -->
-  <div class="row contenido">
-    <div class="izquierda">
-      <!-- Carrusel de imágenes -->
-      <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-          <div *ngIf="coche">
-            <div *ngFor="let url of coche.imagenes; let i = index" class="carousel-item" [class.active]="i === activeIndex">
-              <img [src]="url" class="d-block w-100" alt="Imagen {{ i + 1 }}">
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="fas fa-chevron-left" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="fas fa-chevron-right" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-
-      <!-- Scroll de imágenes -->
-      <div class="scroll-imagenes">
-        <div class="imagenes-pequenas">
-          <img *ngFor="let url of coche.imagenes; let i = index" [src]="url" class="imagen-pequena" (click)="setActiveSlide(i)">
-        </div>
-      </div>
+  <div class="scroll-imagenes">
+    <div class="imagenes-pequenas">
+      <img *ngFor="let url of coche.imagenes; let i = index" [src]="url" class="imagen-pequena" (click)="setActiveSlide(i)">
     </div>
+  </div>
 
+  <!-- Información del coche debajo de las imágenes -->
+  <div class="row justify-content-center">
     <div class="derecha">
-      <!-- Contenedor para datos del coche -->
       <div class="datos-coche" *ngIf="coche">
         <h3 class="informacion-titulo">Información</h3>
         <ul class="ficha">
-          <li>
-            <strong>Año:</strong> <span class="dato">{{ coche.anio | customNumber }}</span>
-          </li>
-          <li>
-            <strong>Kilómetros:</strong> <span class="dato">{{ coche.kms | customNumber }}</span>
-          </li>
-          <li>
-            <strong>Tamaño motor:</strong> <span class="dato">{{ coche.tamanoMotor }}</span>
-          </li>
-          <li>
-            <strong>Motor / CV:</strong> <span class="dato">{{ coche.potencia }}</span>
-          </li>
-          <li>
-            <strong>Caja de cambios:</strong> <span class="dato">{{ coche.cajaCambios }}</span>
-          </li>
-          <li>
-            <strong>Combustible:</strong> <span class="dato">{{ coche.combustible }}</span>
-          </li>
-          <li>
-            <strong>Carrocería:</strong> <span class="dato">{{ coche.carroceria }}</span>
-          </li>
-          <li>
-            <strong>Color interior:</strong> <span class="dato">{{ coche.intColor }}</span>
-          </li>
-          <li>
-            <strong>Color exterior:</strong> <span class="dato">{{ coche.extColor }}</span>
-          </li>
-          <li>
-            <strong>Propietarios:</strong> <span class="dato">{{ coche.propietarios }}</span>
-          </li>
+          <li><strong>Año:</strong> <span class="dato">{{ coche.anio | customNumber }}</span></li>
+          <li><strong>Kilómetros:</strong> <span class="dato">{{ coche.kms | customNumber }}</span></li>
+          <li><strong>Tamaño motor:</strong> <span class="dato">{{ coche.tamanoMotor }}</span></li>
+          <li><strong>Motor / CV:</strong> <span class="dato">{{ coche.potencia }}</span></li>
+          <li><strong>Caja de cambios:</strong> <span class="dato">{{ coche.cajaCambios }}</span></li>
+          <li><strong>Combustible:</strong> <span class="dato">{{ coche.combustible }}</span></li>
+          <li><strong>Carrocería:</strong> <span class="dato">{{ coche.carroceria }}</span></li>
+          <li><strong>Color interior:</strong> <span class="dato">{{ coche.intColor }}</span></li>
+          <li><strong>Color exterior:</strong> <span class="dato">{{ coche.extColor }}</span></li>
+          <li><strong>Propietarios:</strong> <span class="dato">{{ coche.propietarios }}</span></li>
         </ul>
-      </div>
-      <br>
-      <br>
-      <!-- Botones de contacto debajo del contenedor de información -->
-      <div class="contacto text-center">
-        <button class="btn btn-primary btn-square d-block mx-auto mb-2" (click)="mostrarTelefono()">
-          <i class="bi bi-telephone-fill"></i> Contacto por teléfono
-        </button>
-        <p *ngIf="telefonoVisible">{{ telefono }}</p>
-        <button class="btn btn-success btn-square d-block mx-auto" [routerLink]="['/contacto']">
-          <i class="bi bi-envelope-fill"></i> Contacto por email
-        </button>
       </div>
     </div>
   </div>
 
+  <!-- Botones de contacto debajo del contenedor de información -->
+  <div class="contacto text-center">
+    <button class="btn btn-primary btn-square d-block mx-auto mb-2" (click)="mostrarTelefono()">
+      <i class="bi bi-telephone-fill"></i> Contacto por teléfono
+    </button>
+    <p *ngIf="telefonoVisible">{{ telefono }}</p>
+    <button class="btn btn-success btn-square d-block mx-auto" [routerLink]="['/contacto']">
+      <i class="bi bi-envelope-fill"></i> Contacto por email
+    </button>
+  </div>
   <br><br>
-
   <!-- Fila para descripción -->
-  <div class="row descripcion">
-    <h3>Descripción</h3>
+  <div class="datos-coche descripcion-container">
+    <h3 class="text-center">Descripción</h3>
     <p>{{ coche.detalles }}</p>
   </div>
 
