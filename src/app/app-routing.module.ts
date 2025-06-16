@@ -16,10 +16,12 @@ import { PoliticaPrivacidadComponent } from './politica-privacidad/politica-priv
 import { PoliticaCookiesComponent } from './politica-cookies/politica-cookies.component';
 import { AgradecimientoComponent } from './agradecimiento/agradecimiento.component';
 import { ModificarCocheComponent } from './modificar-coche/modificar-coche.component';
+import { CochesVendidosComponent } from './coches-vendidos/coches-vendidos.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'coches-en-venta', component: CochesEnVentaComponent },
+  { path: 'coches-vendidos', component: CochesVendidosComponent },
   { path: 'detalles-coche/:id', component: DetallesCocheComponent },
   { path: 'compramos-tu-coche', component: CompramosTuCocheComponent },
   { path: 'sobre-nosotros', component: SobreNosotrosComponent },
