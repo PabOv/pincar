@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection, addDoc, doc, docData, updateDoc, deleteDoc, getDocs, getDoc } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, addDoc, doc, docData, updateDoc, deleteDoc, getDocs, getDoc, query, where } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
 import { catchError, from, map, Observable, of } from 'rxjs';
 import { Coche } from '../models/coche';
@@ -26,6 +26,46 @@ export class CochesService {
             coches.push({ id: docSnapshot.id, ...cocheData });
           });
           observer.next(coches);
+          observer.complete();
+        })
+        .catch((error) => {
+          observer.error(error);
+        });
+    });
+  }
+
+  getCochesVendidos(): Observable<Coche[]> {
+    const vendidosQuery = query(this.cochesCollection, where('vendido', '==', true));
+
+    return new Observable<Coche[]>((observer) => {
+      getDocs(vendidosQuery)
+        .then((querySnapshot) => {
+          const cochesVendidos: Coche[] = [];
+          querySnapshot.forEach((docSnapshot) => {
+            const cocheData = docSnapshot.data() as Coche;
+            cochesVendidos.push({ id: docSnapshot.id, ...cocheData });
+          });
+          observer.next(cochesVendidos);
+          observer.complete();
+        })
+        .catch((error) => {
+          observer.error(error);
+        });
+    });
+  }
+
+  getCochesNoVendidos(): Observable<Coche[]> {
+    const vendidosQuery = query(this.cochesCollection, where('vendido', '==', false));
+
+    return new Observable<Coche[]>((observer) => {
+      getDocs(vendidosQuery)
+        .then((querySnapshot) => {
+          const cochesVendidos: Coche[] = [];
+          querySnapshot.forEach((docSnapshot) => {
+            const cocheData = docSnapshot.data() as Coche;
+            cochesVendidos.push({ id: docSnapshot.id, ...cocheData });
+          });
+          observer.next(cochesVendidos);
           observer.complete();
         })
         .catch((error) => {
@@ -96,7 +136,7 @@ export class CochesService {
     if (!cocheId) {
       throw new Error('El ID del coche es obligatorio para actualizar.');
     }
-  
+
     const cocheDocRef = doc(this.firestore, `coches/${cocheId}`);
     await updateDoc(cocheDocRef, fieldsToUpdate);
   }

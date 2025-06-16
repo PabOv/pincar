@@ -28,6 +28,7 @@ import { PoliticaPrivacidadComponent } from './politica-privacidad/politica-priv
 import { PoliticaCookiesComponent } from './politica-cookies/politica-cookies.component';
 import { AgradecimientoComponent } from './agradecimiento/agradecimiento.component';
 import { ModificarCocheComponent } from './modificar-coche/modificar-coche.component';
+import { CochesVendidosComponent } from './coches-vendidos/coches-vendidos.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ModificarCocheComponent } from './modificar-coche/modificar-coche.compo
     PoliticaCookiesComponent,
     AgradecimientoComponent,
     ModificarCocheComponent,
+    CochesVendidosComponent,
   ],
   imports: [
     BrowserModule,

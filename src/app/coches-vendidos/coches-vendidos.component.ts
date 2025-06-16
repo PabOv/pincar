@@ -5,18 +5,18 @@ import { Coche } from '../models/coche';
 import { CochesService } from '../services/coches.service';
 
 @Component({
-  selector: 'app-coches-en-venta',
-  templateUrl: './coches-en-venta.component.html',
-  styleUrls: ['./coches-en-venta.component.css']
+  selector: 'app-coches-vendidos',
+  templateUrl: './coches-vendidos.component.html',
+  styleUrl: './coches-vendidos.component.css'
 })
-export class CochesEnVentaComponent implements OnInit {
+export class CochesVendidosComponent {
 
   coches$!: Observable<Coche[]>;
 
   constructor(private _cochesService: CochesService, private router: Router) {}
 
   ngOnInit(): void {
-    this.coches$ = this._cochesService.getCochesNoVendidos();
+    this.coches$ = this._cochesService.getCochesVendidos();
   }
 
   navigateToDetails(cocheId: string | undefined) {
@@ -24,4 +24,5 @@ export class CochesEnVentaComponent implements OnInit {
       this.router.navigate(['/detalles-coche', cocheId]);
     }
   }
+
 }
