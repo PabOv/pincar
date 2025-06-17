@@ -43,6 +43,11 @@
                 "glob": "sitemap.xml",
                 "input": "src",
                 "output": "/"
+              },
+              {
+                "glob": "favicon.png",
+                "input": "src",
+                "output": "/"
               }
             ],
             "styles": [
